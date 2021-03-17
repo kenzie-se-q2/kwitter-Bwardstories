@@ -18,11 +18,15 @@ export const logoutRequest = token => {
 };
 
 export const getMessages = () => {
-  return fetch("http://kwitter-api-b.herokuapp.com/messages", {
+  return fetch(baseURL + "/messages", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
   }).then(res => res.json());
+};
+
+export const createNewUser = () => {
+  return fetch("");
 };
