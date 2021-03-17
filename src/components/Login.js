@@ -1,29 +1,27 @@
-import React, { useState } from "react";
-import { loginRequest } from "../fetchRequests";
+import React, { useState, useEffect } from "react";
+import { loginRequest, getMessages } from "../fetchRequests";
 
 import { LOGIN, useStore } from "../store/store";
 
-function Login(props){
-  const dispatch = useStore((state) => state.dispatch);
-
+function Login(props) {
+  const dispatch = useStore(state => state.dispatch);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
-  const handleLogin = (e) => {
+  const handleLogin = e => {
     e.preventDefault();
-    loginRequest(formData.username, formData.password).then((userData) =>
+    loginRequest(formData.username, formData.password).then(userData =>
       dispatch({ type: LOGIN, payload: userData })
     );
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
-    setFormData((state) => ({ ...state, [inputName]: inputValue }));
+    setFormData(state => ({ ...state, [inputName]: inputValue }));
   };
-
   return (
     <>
       <form id="login-form" onSubmit={handleLogin}>
@@ -44,10 +42,12 @@ function Login(props){
           required
           onChange={handleChange}
         />
-        <button type="submit">Login</button>
+        <button type="submit" onSubmit={handleLogin}>
+          Login
+        </button>
       </form>
     </>
   );
-};
+}
 
 export default Login;

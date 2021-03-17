@@ -15,10 +15,10 @@ code {
 .messageList {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-content: space-around;
   max-width: 40%;
+  height: 100vh;
   background: #00356b;
+  overflow-y: scroll;
 }
 
 .singleMessage {

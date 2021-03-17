@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useStore } from "../store/store";
+import { LOGOUT, useStore } from "../store/store";
 import { logoutRequest } from "../fetchRequests";
 
 function Menu(props) {
-  const user = useStore((state) => state.user);
-  const dispatch = useStore((state) => state.dispatch);
+  const user = useStore(state => state.user);
+  const dispatch = useStore(state => state.dispatch);
 
-  const logout = (e) => {
-    logoutRequest(user.token).then(()=>dispatch({type:"LOGOUT"}));
-    
+  const logout = e => {
+    logoutRequest(user.token).then(() => dispatch({ type: LOGOUT }));
   };
 
   return (
@@ -21,6 +20,6 @@ function Menu(props) {
       </div>
     </div>
   );
-};
+}
 
 export default Menu;
