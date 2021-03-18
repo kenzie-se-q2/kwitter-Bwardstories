@@ -30,3 +30,12 @@ export const getMessages = () => {
 export const createNewUser = () => {
   return fetch("");
 };
+export const likeMessage = () => {
+return fetch(baseURL + "/likes", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+}).then(res => res.json());
+}
