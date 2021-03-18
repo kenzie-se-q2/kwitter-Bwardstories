@@ -9,8 +9,8 @@ const MessageList = () => {
 
   return (
     <section className="messageList">
-      {messageList.map(messageData => (
-        <Message messageData={messageData} />
+      {messageList.map((messageData, index) => (
+        <Message messageData={messageData} key={index} />
       ))}
     </section>
   );

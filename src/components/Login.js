@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { loginRequest, getMessages } from "../fetchRequests";
+import React, { useState } from "react";
+import { loginRequest } from "../fetchRequests";
 
 import { LOGIN, useStore } from "../store/store";
 
