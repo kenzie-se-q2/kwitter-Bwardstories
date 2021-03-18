@@ -1,4 +1,4 @@
-const baseURL = "http://kwitter-api-b.herokuapp.com";
+const baseURL = "http://kwitter-api-b.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
   return fetch(baseURL + "auth/login", {
@@ -18,7 +18,7 @@ export const logoutRequest = token => {
 };
 
 export const getMessages = () => {
-  return fetch(baseURL + "/messages", {
+  return fetch(baseURL + "messages", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export const getMessages = () => {
 };
 
 export const createNewUser = (username, displayName, password) => {
-  return fetch(baseURL + "/users", {
+  return fetch(baseURL + "users", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({
@@ -36,5 +36,12 @@ export const createNewUser = (username, displayName, password) => {
       displayName,
       password,
     }),
+  }).then(res => res.json());
+};
+
+export const getUserList = () => {
+  return fetch(baseURL + "users?limit=10", {
+    method: "GET",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then(res => res.json());
 };

@@ -4,8 +4,9 @@ import NotFound from "./views/NotFound";
 import MessageList from "./views/MessageList";
 import NewUser from "./views/NewUser";
 import { Switch, Route } from "react-router-dom";
-import { useStore, GET_MESSAGES } from "./store/store";
-import { getMessages } from "./fetchRequests";
+import { useStore, GET_MESSAGES, RANDOM_USERS } from "./store/store";
+import { getMessages, getUserList } from "./fetchRequests";
+import RandomUserCarousel from "./views/RandomUserCarousel";
 
 function App() {
   const dispatch = useStore(state => state.dispatch);
@@ -13,6 +14,11 @@ function App() {
   useEffect(async () => {
     const messageData = await getMessages();
     dispatch({ type: GET_MESSAGES, payload: messageData.messages });
+  }, []);
+
+  useEffect(async () => {
+    const userListData = await getUserList();
+    dispatch({ type: RANDOM_USERS, payload: userListData.users });
   }, []);
 
   return (
@@ -23,6 +29,7 @@ function App() {
         <Route component={NotFound} />
       </Switch>
       <NewUser></NewUser>
+      <RandomUserCarousel />
     </div>
   );
 }
