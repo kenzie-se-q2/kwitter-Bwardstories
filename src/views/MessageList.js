@@ -6,11 +6,22 @@ import { useStore } from "../store/store";
 
 const MessageList = () => {
   const messageList = useStore(state => state.messageList);
+  const username = useStore(state => state.user.username);
 
   return (
     <section className="messageList">
-      {messageList.map((messageData, index) => (
-        <Message messageData={messageData} key={index} />
+      {messageList.map(messageData => (
+        <Message
+          likeId={messageData.likes.map(like => {
+            if (like.username === username) {
+              console.log(like.id);
+              return like.id;
+            }
+          })}
+          messageData={messageData}
+          messageId={messageData.id}
+          key={messageData.id}
+        />
       ))}
     </section>
   );

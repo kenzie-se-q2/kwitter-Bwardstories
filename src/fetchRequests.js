@@ -45,12 +45,31 @@ export const getUserList = () => {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then(res => res.json());
 };
-export const likeMessage = () => {
-return fetch(baseURL + "/likes", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-}).then(res => res.json());
-}
+
+export const likeMessage = (token, messageId) => {
+  return fetch(baseURL + "likes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      messageId,
+    }),
+  }).then(res => res.json());
+};
+
+export const removeLike = (token, likeId) => {
+  return fetch(baseURL + "likes/" + ":" + likeId, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      likeId,
+    }),
+  }).then(res => res.json());
+};
