@@ -45,3 +45,12 @@ export const getUserList = () => {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then(res => res.json());
 };
+export const likeMessage = () => {
+return fetch(baseURL + "/likes", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+}).then(res => res.json());
+}
