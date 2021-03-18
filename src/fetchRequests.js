@@ -27,6 +27,14 @@ export const getMessages = () => {
   }).then(res => res.json());
 };
 
-export const createNewUser = () => {
-  return fetch("");
+export const createNewUser = (username, displayName, password) => {
+  return fetch(baseURL + "/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      username,
+      displayName,
+      password,
+    }),
+  }).then(res => res.json());
 };

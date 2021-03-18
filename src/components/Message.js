@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Message = props => {
   const { messageData } = props;
-  console.log(messageData);
   return (
     <Card className="text-center">
       <Card.Header>UserName: {messageData.username}</Card.Header>
