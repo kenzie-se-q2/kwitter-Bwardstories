@@ -3,12 +3,19 @@ import "../assets/index.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { likeMessage, removeLike } from "../fetchRequests";
-import { useStore } from "../store/store";
+import { getUserList, likeMessage, removeLike } from "../fetchRequests";
+import { useStore, SELECTED_USER } from "../store/store";
+import { getSelectedUser } from "../fetchRequests";
 
 const Message = props => {
   const { messageData, messageId, likeId } = props;
   const token = useStore(state => state.user.token);
+  const dispatch = useStore(state => state.dispatch);
+
+  const handleProfileClick = async () => {
+    let selectedUser = await getSelectedUser(messageData.username);
+    dispatch({ type: SELECTED_USER, payload: selectedUser });
+  };
 
   return (
     <Card className="text-center">
@@ -22,6 +29,11 @@ const Message = props => {
         </Button>
         <Button variant="primary" onClick={e => removeLike(token, likeId)}>
           unLike
+        </Button>
+        <Button
+          variant="primary"
+          onClick={e => getSelectedUser(messageData.username)}>
+          View Profile
         </Button>
       </Card.Body>
       <Card.Footer className="text-muted">2 days ago</Card.Footer>
