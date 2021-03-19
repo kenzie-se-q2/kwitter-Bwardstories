@@ -7,6 +7,7 @@ const initialState = {
   messages: [],
   messageList: [],
   userList: [],
+  selectedUser: {},
 };
 
 // set action types
@@ -14,6 +15,7 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const RANDOM_USERS = "RANDOM_USERS";
+export const SELECTED_USER = "SELECTED_USER";
 
 // define reducer function
 const reducer = (state, action) => {
