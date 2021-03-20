@@ -15,6 +15,7 @@ const Message = props => {
   const handleProfileClick = async () => {
     let selectedUser = await getSelectedUser(messageData.username);
     dispatch({ type: SELECTED_USER, payload: selectedUser });
+    console.log(selectedUser);
   };
 
   return (
@@ -32,7 +33,7 @@ const Message = props => {
         </Button>
         <Button
           variant="primary"
-          onClick={e => getSelectedUser(messageData.username)}>
+          onClick={e => handleProfileClick(messageData.username)}>
           View Profile
         </Button>
       </Card.Body>

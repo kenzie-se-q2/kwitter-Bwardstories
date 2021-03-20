@@ -75,7 +75,7 @@ export const removeLike = (token, likeId) => {
 };
 
 export const getSelectedUser = username => {
-  return fetch(baseURL + "users/:" + username, {
+  return fetch(baseURL + "users/" + username, {
     method: "GET",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then(res => res.json());
