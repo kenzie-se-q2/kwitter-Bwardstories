@@ -7,14 +7,15 @@ import { getUserList, likeMessage, removeLike } from "../fetchRequests";
 import { useStore, SELECTED_USER } from "../store/store";
 import { getSelectedUser } from "../fetchRequests";
 
-const Message = (props) => {
+const Message = props => {
   const { messageData, messageId, likeId } = props;
-  const token = useStore((state) => state.user.token);
-  const dispatch = useStore((state) => state.dispatch);
+  const token = useStore(state => state.user.token);
+  const dispatch = useStore(state => state.dispatch);
 
   const handleProfileClick = async () => {
     let selectedUser = await getSelectedUser(messageData.username);
     dispatch({ type: SELECTED_USER, payload: selectedUser });
+    console.log(selectedUser);
   };
 
   return (
@@ -24,16 +25,15 @@ const Message = (props) => {
         <Card.Text>message: {messageData.text}</Card.Text>
         <Card.Text>Date Sent: {messageData.createdAt}</Card.Text>
         <Card.Text>Likes: {messageData.likes.length}</Card.Text>
-        <Button
-          variant="primary"
-          onClick={(e) => likeMessage(token, messageId)}
-        >
+        <Button variant="primary" onClick={e => likeMessage(token, messageId)}>
           Like
         </Button>
-        <Button variant="primary" onClick={(e) => removeLike(token, likeId)}>
+        <Button variant="primary" onClick={e => removeLike(token, likeId)}>
           unLike
         </Button>
-        <Button variant="primary" onClick={handleProfileClick}>
+        <Button
+          variant="primary"
+          onClick={e => handleProfileClick(messageData.username)}>
           View Profile
         </Button>
       </Card.Body>

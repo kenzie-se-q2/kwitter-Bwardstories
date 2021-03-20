@@ -24,7 +24,7 @@ const RandomUserCarousel = () => {
                 <Card.Text>
                   {user.about
                     ? user.about
-                    : "No about info updated for this user"}
+                    : "One thing about me, I haven't gotten around to updating my about me info yet"}
                 </Card.Text>
                 <Button variant="primary">See Profile</Button>
               </Card.Body>
