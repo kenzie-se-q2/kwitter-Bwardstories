@@ -5,14 +5,14 @@ import "../assets/index.css";
 import { useStore } from "../store/store";
 
 const MessageList = () => {
-  const messageList = useStore(state => state.messageList);
-  const username = useStore(state => state.user.username);
-
+  const messageList = useStore((state) => state.messageList);
+  const username = useStore((state) => state.user.username);
+  const selectedUser = useStore((state) => state.selectedUser);
   return (
     <section className="messageList">
-      {messageList.map(messageData => (
+      {messageList.map((messageData) => (
         <Message
-          likeId={messageData.likes.map(like => {
+          likeId={messageData.likes.map((like) => {
             if (like.username === username) {
               console.log(like.id);
               return like.id;

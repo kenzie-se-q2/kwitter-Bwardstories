@@ -8,13 +8,13 @@ export const loginRequest = (username, password) => {
       username,
       password,
     }),
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
-export const logoutRequest = token => {
+export const logoutRequest = (token) => {
   return fetch(baseURL + "auth/logout", {
     headers: { Authorization: "Bearer " + token },
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
 export const getMessages = () => {
@@ -24,7 +24,7 @@ export const getMessages = () => {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
 export const createNewUser = (username, displayName, password) => {
@@ -36,14 +36,14 @@ export const createNewUser = (username, displayName, password) => {
       displayName,
       password,
     }),
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
 export const getUserList = () => {
   return fetch(baseURL + "users?limit=10", {
     method: "GET",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
 export const likeMessage = (token, messageId) => {
@@ -57,7 +57,7 @@ export const likeMessage = (token, messageId) => {
     body: JSON.stringify({
       messageId,
     }),
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
 export const removeLike = (token, likeId) => {
@@ -71,12 +71,12 @@ export const removeLike = (token, likeId) => {
     body: JSON.stringify({
       likeId,
     }),
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };
 
-export const getSelectedUser = username => {
-  return fetch(baseURL + "users/:" + username, {
+export const getSelectedUser = (username) => {
+  return fetch(baseURL + "users/" + username, {
     method: "GET",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-  }).then(res => res.json());
+  }).then((res) => res.json());
 };

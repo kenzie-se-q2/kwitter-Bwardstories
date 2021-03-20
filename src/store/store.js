@@ -30,6 +30,8 @@ const reducer = (state, action) => {
       return { messageList: action.payload };
     case RANDOM_USERS:
       return { userList: action.payload };
+    case SELECTED_USER:
+      return { selectedUser: action.payload };
     default:
       return state;
   }
