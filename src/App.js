@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Home from "./views/Home";
+import LoginScreen from "./views/LoginScreen";
 import NotFound from "./views/NotFound";
 import MessageList from "./views/MessageList";
 import NewUser from "./views/NewUser";
@@ -7,14 +8,10 @@ import { Switch, Route } from "react-router-dom";
 import { useStore, GET_MESSAGES, RANDOM_USERS } from "./store/store";
 import { getMessages, getUserList } from "./fetchRequests";
 import RandomUserCarousel from "./views/RandomUserCarousel";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const dispatch = useStore(state => state.dispatch);
-
-  useEffect(async () => {
-    const messageData = await getMessages();
-    dispatch({ type: GET_MESSAGES, payload: messageData.messages });
-  }, []);
 
   useEffect(async () => {
     const userListData = await getUserList();
@@ -24,12 +21,12 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/messages" component={MessageList}></Route>
+        <Route exact path="/" component={LoginScreen} />
+        <Route path="/home" component={Home} />
+        <Route path="/createNewUser" component={NewUser} />
+        <Route path="/profile" component={UserProfile} />
         <Route component={NotFound} />
       </Switch>
-      <NewUser></NewUser>
-      <RandomUserCarousel />
     </div>
   );
 }

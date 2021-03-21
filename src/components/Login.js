@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
-
+import { Link } from "react-router-dom";
 import { LOGIN, useStore } from "../store/store";
+import { useHistory } from "react-router-dom";
 
 function Login(props) {
+  const history = useHistory();
   const dispatch = useStore(state => state.dispatch);
+  const user = useStore(state => state.user);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
+  const handleHistory = () => {
+    history.push("/home");
+  };
+
   const handleLogin = e => {
     e.preventDefault();
-    loginRequest(formData.username, formData.password).then(userData =>
-      dispatch({ type: LOGIN, payload: userData })
-    );
+    loginRequest(formData.username, formData.password)
+      .then(userData => dispatch({ type: LOGIN, payload: userData }))
+      .then(handleHistory());
   };
 
   const handleChange = e => {
@@ -22,6 +29,7 @@ function Login(props) {
     const inputValue = e.target.value;
     setFormData(state => ({ ...state, [inputName]: inputValue }));
   };
+
   return (
     <>
       <form id="login-form" onSubmit={handleLogin}>
@@ -45,6 +53,14 @@ function Login(props) {
         <button type="submit" onSubmit={handleLogin}>
           Login
         </button>
+
+        <p>
+          Click{" "}
+          <Link to="/createNewUser" c>
+            Here
+          </Link>
+          to sign up
+        </p>
       </form>
     </>
   );

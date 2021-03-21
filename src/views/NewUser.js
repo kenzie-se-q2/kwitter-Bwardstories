@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createNewUser } from "../fetchRequests";
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Col from "react-bootstrap/Col";
@@ -56,12 +57,14 @@ const NewUser = props => {
             </InputGroup>
           </Col>
           <Col xs="auto">
-            <Button
-              type="submit"
-              className="mb-2"
-              onClick={() => createNewUser(username, displayName, password)}>
-              Submit
-            </Button>
+            <Link to="/">
+              <Button
+                type="submit"
+                className="mb-2"
+                onClick={() => createNewUser(username, displayName, password)}>
+                Submit
+              </Button>
+            </Link>
           </Col>
         </Form.Row>
       </Form>

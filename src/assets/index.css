@@ -15,7 +15,7 @@ code {
 .messageList {
   display: flex;
   flex-direction: column;
-  max-width: 40%;
+  max-width: 100%;
   height: 100vh;
   background: #00356b;
   overflow-y: scroll;
@@ -28,24 +28,12 @@ code {
 }
 
 .carouselContainer {
-  height: 25%;
-  width: 25%;
-  background: blue;
+  height: 45%;
+  width: 60%;
 }
 
 .userCards {
-  width: 100%;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  /* height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  border: 1px solid black;
-  background-image: none; */
+  height: 50%;
 }
 
 .carousel-control-next-icon:after {
@@ -57,4 +45,26 @@ code {
   content: "<";
   font-size: 55px;
   color: black;
+}
+
+.homePage {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leftContainer {
+  min-width: 30%;
+}
+
+.middleContainer {
+  min-width: 40%;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 30%;
+  max-height: 100vh;
 }
