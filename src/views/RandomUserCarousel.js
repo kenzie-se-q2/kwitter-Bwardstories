@@ -5,12 +5,13 @@ import defaultPic from "../images/kenzie.jpe";
 import "../assets/index.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const RandomUserCarousel = () => {
   const userList = useStore(state => state.userList);
   console.log(userList);
   return (
-    <div>
+    <>
       <Carousel className="carouselContainer">
         {userList.map((user, index) => (
           <Carousel.Item key={index}>
@@ -32,7 +33,7 @@ const RandomUserCarousel = () => {
           </Carousel.Item>
         ))}
       </Carousel>
-    </div>
+    </>
   );
 };
 
