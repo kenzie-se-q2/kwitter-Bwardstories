@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const RandomUserCarousel = () => {
   const userList = useStore(state => state.userList);
-  console.log(userList);
+
   return (
     <>
       <Carousel className="carouselContainer">

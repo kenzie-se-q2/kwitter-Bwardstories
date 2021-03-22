@@ -7,26 +7,26 @@ import { getMessages } from "../fetchRequests";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const MessageList = () => {
-
   const messageList = useStore(state => state.messageList);
-  const username = useStore(state => state.user.username);
+  const user = useStore(state => state.user);
   const dispatch = useStore(state => state.dispatch);
 
-  useEffect(async () => {
-    const messageData = await getMessages();
-    dispatch({ type: GET_MESSAGES, payload: messageData.messages });
-  }, []);
-
+  useEffect(() => {
+    async function fetchData() {
+      const messageData = await getMessages();
+      dispatch({ type: GET_MESSAGES, payload: messageData.messages });
+    }
+    fetchData();
+  }, [dispatch]);
 
   return (
     <section className="messageList">
-      {messageList.map((messageData) => (
+      {messageList.map(messageData => (
         <Message
-          likeId={messageData.likes.map((like) => {
-            if (like.username === username) {
-              console.log(like.id);
+          likeId={messageData.likes.map(like => {
+            if (like.username === user.username) {
               return like.id;
-            }
+            } else return "notLiked";
           })}
           messageData={messageData}
           messageId={messageData.id}

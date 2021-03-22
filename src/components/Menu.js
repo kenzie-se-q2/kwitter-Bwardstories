@@ -4,7 +4,7 @@ import { LOGOUT, useStore } from "../store/store";
 import { logoutRequest } from "../fetchRequests";
 import { useHistory } from "react-router-dom";
 
-function Menu(props) {
+function Menu() {
   const history = useHistory();
   const user = useStore(state => state.user);
   const dispatch = useStore(state => state.dispatch);
@@ -13,7 +13,7 @@ function Menu(props) {
     history.push("/");
   };
 
-  const logout = e => {
+  const logout = () => {
     logoutRequest(user.token)
       .then(() => dispatch({ type: LOGOUT }))
       .then(handleHistory());

@@ -16,9 +16,14 @@ code {
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  height: 100vh;
-  background: #00356b;
+  height: 88vh;
+  /* background: #00356b; */
+  background: #dae8f3;
   overflow-y: scroll;
+}
+
+.messageList::-webkit-scrollbar {
+  display: none;
 }
 
 .singleMessage {
