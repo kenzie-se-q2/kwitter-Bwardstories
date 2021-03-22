@@ -4,7 +4,7 @@ import "../assets/index.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getUserList, likeMessage, removeLike } from "../fetchRequests";
+import { likeMessage, removeLike } from "../fetchRequests";
 import { useStore, SELECTED_USER } from "../store/store";
 import { getSelectedUser } from "../fetchRequests";
 

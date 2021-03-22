@@ -21,6 +21,10 @@ code {
   overflow-y: scroll;
 }
 
+.messageList::-webkit-scrollbar {
+  display: none;
+}
+
 .singleMessage {
   max-width: 70%;
   margin: 2%;
@@ -67,8 +71,4 @@ code {
   justify-content: space-around;
   min-width: 30%;
   max-height: 100vh;
-}
-
-.messageList::-webkit-scrollbar {
-  display: none;
 }

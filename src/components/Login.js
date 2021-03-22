@@ -7,7 +7,6 @@ import { useHistory } from "react-router-dom";
 function Login(props) {
   const history = useHistory();
   const dispatch = useStore(state => state.dispatch);
-  const user = useStore(state => state.user);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
