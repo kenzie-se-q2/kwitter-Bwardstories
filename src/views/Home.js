@@ -1,13 +1,14 @@
 import React from "react";
 import MessageList from "./MessageList";
 import { useStore } from "../store/store";
-import RandomUserCarousel from "./RandomUserCarousel";
+import RandomUserCarousel from "../components/RandomUserCarousel";
 import Menu from "../components/Menu";
 import "../assets/index.css";
 
-function Home(props) {
+function Home() {
   const user = useStore(state => state.user);
   console.log(user.token);
+
   return (
     <section className="homePage">
       <div className="leftContainer">

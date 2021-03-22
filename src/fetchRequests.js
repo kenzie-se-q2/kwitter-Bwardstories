@@ -67,9 +67,6 @@ export const removeLike = (token, likeId) => {
       Accept: "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify({
-      likeId,
-    }),
   }).then(res => res.json());
 };
 

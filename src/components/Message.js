@@ -1,55 +1,92 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "../assets/index.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { likeMessage, removeLike } from "../fetchRequests";
-import { useStore, SELECTED_USER } from "../store/store";
+import {
+  useStore,
+  SELECTED_USER,
+  OPEN_MODAL,
+  CLOSE_MODAL,
+} from "../store/store";
 import { getSelectedUser } from "../fetchRequests";
+import Modal from "react-modal";
 
 const Message = props => {
-  const history = useHistory();
-  const [liked, setLiked] = useState(false);
   const { messageData, messageId, likeId } = props;
+  const [likes, setLikes] = useState(messageData.likes.length);
   const token = useStore(state => state.user.token);
   const dispatch = useStore(state => state.dispatch);
-
-  const handleHistory = () => {
-    history.push("/selectedUserProfile");
+  const isModalOpen = useStore(state => state.isModalOpen);
+  const selectedUser = useStore(state => state.selectedUser);
+  const customStyles = {
+    content: {
+      top: "20%",
+      left: "30%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      width: "40%",
+      height: "70%",
+      transform: "translate(-40%, -10%)",
+    },
   };
 
-  const handleProfileClick = async () => {
-    let selectedUser = await getSelectedUser(messageData.username);
-    dispatch({ type: SELECTED_USER, payload: selectedUser });
-    handleHistory();
-    console.log(selectedUser);
+  const handleProfileClick = () => {
+    getSelectedUser(messageData.username).then(data =>
+      dispatch({ type: SELECTED_USER, payload: data })
+    );
+    dispatch({ type: OPEN_MODAL });
   };
 
   const handleLike = () => {
-    if (liked === true) {
+    likeMessage(token, messageId).then(setLikes(likes => likes + 1));
+  };
+
+  const handleRemoveLike = () => {
+    let currentLike = likeId.filter(like => like !== "notLiked");
+    console.log(currentLike);
+    if (!currentLike) {
       return;
     }
-    likeMessage(token, messageId);
-    setLiked(true);
+    removeLike(token, currentLike);
+    setLikes(likes => likes - 1);
   };
-  console.log(liked);
+
+  const closeModal = () => {
+    dispatch({ type: SELECTED_USER, payload: "" });
+    dispatch({ type: CLOSE_MODAL });
+  };
+
+  useEffect(() => {}, [likes]);
+  // console.log(likeId);
   return (
-    <Card className="text-center">
+    <Card
+      className="text-center"
+      style={{
+        margin: "2%",
+        borderRadius: "2%",
+        boxShadow: "8px 8px black",
+      }}>
+      <Modal style={customStyles} isOpen={isModalOpen}>
+        <div>
+          <button onClick={closeModal}>CLOSE</button>
+          {JSON.stringify(selectedUser)}
+        </div>
+      </Modal>
       <Card.Header>UserName: {messageData.username}</Card.Header>
       <Card.Body>
         <Card.Text>message: {messageData.text}</Card.Text>
         <Card.Text>Date Sent: {messageData.createdAt}</Card.Text>
-        <Card.Text>Likes: {messageData.likes.length}</Card.Text>
+        <Card.Text>Likes: {likes}</Card.Text>
         <Button variant="primary" onClick={handleLike}>
           Like
         </Button>
-        <Button variant="primary" onClick={e => removeLike(token, likeId)}>
+        <Button variant="primary" onClick={handleRemoveLike}>
           unLike
         </Button>
-        <Button
-          variant="primary"
-          onClick={e => handleProfileClick(messageData.username)}>
+        <Button variant="primary" onClick={handleProfileClick}>
           View Profile
         </Button>
       </Card.Body>

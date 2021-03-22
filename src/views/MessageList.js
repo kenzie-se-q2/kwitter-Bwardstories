@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const MessageList = () => {
   const messageList = useStore(state => state.messageList);
-  const username = useStore(state => state.user.username);
+  const user = useStore(state => state.user);
   const dispatch = useStore(state => state.dispatch);
 
   useEffect(() => {
@@ -24,10 +24,9 @@ const MessageList = () => {
       {messageList.map(messageData => (
         <Message
           likeId={messageData.likes.map(like => {
-            if (like.username === username) {
-              console.log(like.id);
+            if (like.username === user.username) {
               return like.id;
-            }
+            } else return "notLiked";
           })}
           messageData={messageData}
           messageId={messageData.id}

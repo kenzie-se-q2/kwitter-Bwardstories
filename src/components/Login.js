@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { LOGIN, useStore } from "../store/store";
 import { useHistory } from "react-router-dom";
 
-function Login(props) {
+function Login() {
   const history = useHistory();
   const dispatch = useStore(state => state.dispatch);
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ function Login(props) {
         </button>
 
         <p>
-          Click{" "}
+          Click
           <Link to="/createNewUser" c>
             Here
           </Link>
