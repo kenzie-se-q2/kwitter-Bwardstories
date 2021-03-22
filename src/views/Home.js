@@ -7,6 +7,7 @@ import "../assets/index.css";
 
 function Home(props) {
   const user = useStore(state => state.user);
+  console.log(user.token);
   return (
     <section className="homePage">
       <div className="leftContainer">

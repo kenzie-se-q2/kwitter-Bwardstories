@@ -4,6 +4,7 @@ import LoginScreen from "./views/LoginScreen";
 import NotFound from "./views/NotFound";
 import MessageList from "./views/MessageList";
 import NewUser from "./views/NewUser";
+import SelectedUserProfile from "./components/SelectedUserProfile";
 import { Switch, Route } from "react-router-dom";
 import { useStore, GET_MESSAGES, RANDOM_USERS } from "./store/store";
 import { getMessages, getUserList } from "./fetchRequests";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/createNewUser" component={NewUser} />
         <Route path="/profile" component={UserProfile} />
+        <Route path="/selectedUserProfile" component={SelectedUserProfile} />
         <Route component={NotFound} />
       </Switch>
     </div>

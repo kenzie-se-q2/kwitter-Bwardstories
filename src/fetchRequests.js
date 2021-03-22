@@ -61,10 +61,9 @@ export const likeMessage = (token, messageId) => {
 };
 
 export const removeLike = (token, likeId) => {
-  return fetch(baseURL + "likes/" + ":" + likeId, {
+  return fetch(baseURL + "likes/" + likeId, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
       Accept: "application/json",
       Authorization: "Bearer " + token,
     },
