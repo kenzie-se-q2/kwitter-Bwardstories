@@ -7,7 +7,6 @@ import "../assets/index.css";
 
 function Home() {
   const user = useStore(state => state.user);
-  console.log(user.token);
 
   return (
     <section className="homePage">

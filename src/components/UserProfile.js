@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useStore } from "../store/store";
-import { getSelectedUser } from "../fetchRequests";
+import { getSelectedUser, postPicture } from "../fetchRequests";
 import defaultPic from "../images/kenzie.jpe";
 import "../assets/index.css";
 
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
+  const [picture, setPicture] = useState(null);
   const user = useStore(state => state.user);
   const selectedUser = useStore(state => state.selectedUser);
 
   useEffect(() => {
     getSelectedUser(user.username).then(res => setUserProfile(res.user));
-  }, []);
+  }, [picture, postPicture]);
 
-  console.log(userProfile);
+  const handleSubmitPhoto = e => {
+    postPicture(user.token, user.username, picture);
+  };
+
   return (
     <div className="profileContainer">
       <img
         className="profilePic"
-        src={user.pictureLocation ? user.pictureLocation : defaultPic}
+        src={
+          userProfile.pictureLocation
+            ? `http://kwitter-api-b.herokuapp.com/users/${userProfile.username}/picture`
+            : defaultPic
+        }
         alt=""
       />
       <div className="profileBody">
@@ -30,6 +38,8 @@ const UserProfile = () => {
             : " One thing about me, I haven't gotten around to updating my about me info yet"}
         </div>
         <div>Profile Birth : {userProfile.createdAt}</div>
+        <input type="file" onChange={e => setPicture(e.target.files[0])} />
+        <button onClick={handleSubmitPhoto}>Update Photo</button>
       </div>
     </div>
   );

@@ -76,3 +76,15 @@ export const getSelectedUser = username => {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then(res => res.json());
 };
+
+export const postPicture = (token, username, pictureData) => {
+  let formData = new FormData();
+  formData.append("picture", pictureData);
+  fetch(baseURL + `users/${username}/picture`, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    body: formData,
+  }).then(res => res.json());
+};
