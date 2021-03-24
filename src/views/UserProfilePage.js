@@ -7,7 +7,7 @@ import "../assets/index.css";
 
 const UserProfilePage = () => {
   const user = useStore(state => state.user);
-  console.log(user.token);
+
   return (
     <section className="profilePage">
       <div className="leftContainer">

@@ -90,3 +90,26 @@ export const postMessage = (userInput, token) => {
     }),
   }).then((res) => res.json());
 };
+
+export const postPicture = (token, username, pictureData) => {
+  let formData = new FormData();
+  formData.append("picture", pictureData);
+  fetch(baseURL + `users/${username}/picture`, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    body: formData,
+  }).then(res => res.json());
+};
+
+export const patchUser = (token, username, newUserInfo) => {
+  return fetch(baseURL + `users/${username}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newUserInfo),
+  }).then(res => res.json());
+};

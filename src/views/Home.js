@@ -7,8 +7,9 @@ import "../assets/index.css";
 // import MessageItem from "../components/MessageItem";
 
 function Home() {
-  const user = useStore((state) => state.user);
-  console.log(user.token);
+
+  const user = useStore(state => state.user);
+
 
   return (
     <section className="homePage">

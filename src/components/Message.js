@@ -46,7 +46,6 @@ const Message = props => {
 
   const handleRemoveLike = () => {
     let currentLike = likeId.filter(like => like !== "notLiked");
-    console.log(currentLike);
     if (!currentLike) {
       return;
     }
@@ -60,7 +59,7 @@ const Message = props => {
   };
 
   useEffect(() => {}, [likes]);
-  // console.log(likeId);
+
   return (
     <Card
       className="text-center"
