@@ -7,6 +7,7 @@ import { Switch, Route } from "react-router-dom";
 import { useStore, RANDOM_USERS } from "./store/store";
 import { getUserList } from "./fetchRequests";
 import UserProfile from "./components/UserProfile";
+import UserProfilePage from "./views/UserProfilePage";
 
 function App() {
   const dispatch = useStore(state => state.dispatch);
@@ -25,7 +26,7 @@ function App() {
         <Route exact path="/" component={LoginScreen} />
         <Route path="/home" component={Home} />
         <Route path="/createNewUser" component={NewUser} />
-        <Route path="/profile" component={UserProfile} />
+        <Route path="/profilepage" component={UserProfilePage} />
         <Route component={NotFound} />
       </Switch>
     </div>

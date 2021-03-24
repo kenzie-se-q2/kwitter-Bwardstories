@@ -18,11 +18,15 @@ const RandomUserCarousel = () => {
             <Card className="userCards">
               <Card.Img
                 variant="top"
-                src={user.pictureLocation ? user.pictureLocation : defaultPic}
+                src={
+                  user.pictureLocation
+                    ? `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`
+                    : defaultPic
+                }
               />
               <Card.Body>
                 <Card.Title>{user.displayName}</Card.Title>
-                <Card.Text>
+                <Card.Text style={{ height: "80px" }}>
                   {user.about
                     ? user.about
                     : "One thing about me, I haven't gotten around to updating my about me info yet"}
