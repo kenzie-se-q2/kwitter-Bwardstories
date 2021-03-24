@@ -4,6 +4,7 @@ import { devtools, redux } from "zustand/middleware";
 // define the store's initial state
 const initialState = {
   user: {},
+  password: "",
   messages: [],
   messageList: [],
   userList: [],
@@ -14,6 +15,7 @@ const initialState = {
 // set action types
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const SET_PASSWORD = "SET_PASSWORD";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const RANDOM_USERS = "RANDOM_USERS";
 export const SELECTED_USER = "SELECTED_USER";
@@ -27,6 +29,8 @@ const reducer = (state, action) => {
       return {
         user: action.payload,
       };
+    case SET_PASSWORD:
+      return { password: action.payload };
     case LOGOUT:
       return { user: {} };
     case GET_MESSAGES:

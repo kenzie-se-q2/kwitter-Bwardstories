@@ -33,23 +33,13 @@ code {
 }
 
 .carouselContainer {
-  height: 45%;
+  height: 59%;
   width: 60%;
+  box-shadow: 10px 10px 10px;
 }
 
-.userCards {
-  height: 50%;
-}
-
-.carousel-control-next-icon:after {
-  content: ">";
-  font-size: 55px;
-  color: black;
-}
-.carousel-control-prev-icon:after {
-  content: "<";
-  font-size: 55px;
-  color: black;
+.userCards img {
+  height: 150%;
 }
 
 .homePage {
@@ -58,6 +48,9 @@ code {
 }
 
 .leftContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 30%;
 }
 
@@ -72,4 +65,47 @@ code {
   justify-content: space-around;
   min-width: 30%;
   max-height: 100vh;
+}
+
+.profilePic {
+  border: 2px solid black;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  margin-top: 2%;
+  width: 100%;
+  height: 60%;
+}
+
+.profileContainer {
+  min-height: 99vh;
+  min-width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePage {
+  display: flex;
+  justify-content: space-around;
+  background: #00356b;
+  height: 100vh;
+}
+
+.profileBody {
+  padding: 2%;
+  border: 2px solid black;
+  height: 100%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  margin-bottom: 2%;
+  background: #dae8f3;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: gray;
+  width: 35%;
+  height: 50%;
 }

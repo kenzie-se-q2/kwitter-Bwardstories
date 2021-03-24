@@ -9,7 +9,7 @@ function Navigation(props) {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/profile">My Profile</Link>{" "}
+          <Link to="/profilepage">My Profile</Link>{" "}
         </li>
         <li>
           <Link to="/contact">Contacts</Link>{" "}

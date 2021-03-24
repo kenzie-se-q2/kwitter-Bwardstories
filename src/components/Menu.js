@@ -21,10 +21,9 @@ function Menu() {
 
   return (
     <div id="menu">
-      <div id="menu-links">
-        <Link to="/profile">Profile</Link>
-        {user.token && <button onClick={logout}>Logout</button>}
-      </div>
+      <Link to="/home">Home</Link>
+      <Link to="/profilepage">Profile</Link>
+      {user.token && <Link onClick={logout}>Logout</Link>}
     </div>
   );
 }
