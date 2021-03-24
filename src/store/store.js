@@ -5,6 +5,7 @@ import { devtools, redux } from "zustand/middleware";
 const initialState = {
   user: {},
   password: "",
+  profilePic: "",
   messages: [],
   messageList: [],
   userList: [],
@@ -24,6 +25,7 @@ export const CLOSE_MODAL = "CLOSE_MODAL";
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL2 = "CLOSE_MODAL2";
 export const OPEN_MODAL2 = "OPEN_MODAL2";
+export const PROFILE_PIC = "PROFILE_PIC";
 
 // define reducer function
 const reducer = (state, action) => {
@@ -50,6 +52,8 @@ const reducer = (state, action) => {
       return { isModal2Open: true };
     case CLOSE_MODAL2:
       return { isModal2Open: false };
+    case PROFILE_PIC:
+      return { profilePic: action.payload };
     default:
       return state;
   }

@@ -17,7 +17,7 @@ const MessageList = () => {
       dispatch({ type: GET_MESSAGES, payload: messageData.messages });
     }
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, messageList]);
 
   return (
     <section className="messageList">

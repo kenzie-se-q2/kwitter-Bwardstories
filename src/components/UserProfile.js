@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useStore, OPEN_MODAL2, CLOSE_MODAL2 } from "../store/store";
+import {
+  useStore,
+  PROFILE_PIC,
+  OPEN_MODAL2,
+  CLOSE_MODAL2,
+} from "../store/store";
 import { getSelectedUser, postPicture, patchUser } from "../fetchRequests";
 import defaultPic from "../images/defaultProfile.png";
 import "../assets/index.css";
@@ -12,6 +17,7 @@ const UserProfile = () => {
   const [picture, setPicture] = useState(null);
   const [about, setAbout] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const profilePic = useStore(state => state.profilePic);
   const user = useStore(state => state.user);
   const selectedUser = useStore(state => state.selectedUser);
   const isModal2Open = useStore(state => state.isModal2Open);
@@ -32,10 +38,14 @@ const UserProfile = () => {
 
   useEffect(() => {
     getSelectedUser(user.username).then(res => setUserProfile(res.user));
-  }, [picture, postPicture]);
+  }, [postPicture, displayName, about]);
 
   const handleSubmitPhoto = e => {
     postPicture(user.token, user.username, picture);
+    dispatch({
+      type: PROFILE_PIC,
+      payload: `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`,
+    });
   };
 
   const handleSubmitAbout = e => {
@@ -45,6 +55,7 @@ const UserProfile = () => {
     };
 
     patchUser(user.token, user.username, newUserInfo);
+    setAbout("");
   };
 
   const handleSubmitDisplayName = e => {
@@ -54,6 +65,7 @@ const UserProfile = () => {
     };
 
     patchUser(user.token, user.username, newUserInfo);
+    setDisplayName("");
   };
 
   const openModal = () => {
@@ -68,11 +80,7 @@ const UserProfile = () => {
     <div className="profileContainer">
       <img
         className="profilePic"
-        src={
-          userProfile.pictureLocation
-            ? `http://kwitter-api-b.herokuapp.com/users/${userProfile.username}/picture`
-            : defaultPic
-        }
+        src={userProfile.pictureLocation ? profilePic : defaultPic}
         alt=""
       />
       <div className="profileBody">
