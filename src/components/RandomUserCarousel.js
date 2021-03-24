@@ -1,7 +1,7 @@
 import React from "react";
 import { useStore } from "../store/store";
 import Carousel from "react-bootstrap/Carousel";
-import defaultPic from "../images/kenzie.jpe";
+import defaultPic from "../images/defaultProfile.png";
 import "../assets/index.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -23,6 +23,7 @@ const RandomUserCarousel = () => {
                     ? `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`
                     : defaultPic
                 }
+                style={{ height: "340px" }}
               />
               <Card.Body>
                 <Card.Title>{user.displayName}</Card.Title>

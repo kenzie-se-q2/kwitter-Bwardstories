@@ -10,6 +10,7 @@ const initialState = {
   userList: [],
   selectedUser: {},
   isModalOpen: false,
+  isModal2Open: false,
 };
 
 // set action types
@@ -21,6 +22,8 @@ export const RANDOM_USERS = "RANDOM_USERS";
 export const SELECTED_USER = "SELECTED_USER";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL2 = "CLOSE_MODAL2";
+export const OPEN_MODAL2 = "OPEN_MODAL2";
 
 // define reducer function
 const reducer = (state, action) => {
@@ -43,6 +46,10 @@ const reducer = (state, action) => {
       return { isModalOpen: true };
     case CLOSE_MODAL:
       return { isModalOpen: false };
+    case OPEN_MODAL2:
+      return { isModal2Open: true };
+    case CLOSE_MODAL2:
+      return { isModal2Open: false };
     default:
       return state;
   }

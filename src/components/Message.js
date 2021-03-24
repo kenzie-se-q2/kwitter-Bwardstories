@@ -59,7 +59,7 @@ const Message = props => {
   };
 
   useEffect(() => {}, [likes]);
-  // console.log(likeId);
+
   return (
     <Card
       className="text-center"

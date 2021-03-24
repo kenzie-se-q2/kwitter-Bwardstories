@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { useStore } from "../store/store";
-import { getSelectedUser, postPicture } from "../fetchRequests";
-import defaultPic from "../images/kenzie.jpe";
+import { useStore, OPEN_MODAL2, CLOSE_MODAL2 } from "../store/store";
+import { getSelectedUser, postPicture, patchUser } from "../fetchRequests";
+import defaultPic from "../images/defaultProfile.png";
 import "../assets/index.css";
+import Modal from "react-modal";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState({});
   const [picture, setPicture] = useState(null);
+  const [about, setAbout] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const user = useStore(state => state.user);
   const selectedUser = useStore(state => state.selectedUser);
+  const isModal2Open = useStore(state => state.isModal2Open);
+  const dispatch = useStore(state => state.dispatch);
+
+  const customStyles = {
+    content: {
+      top: "20%",
+      left: "30%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      width: "40%",
+      height: "70%",
+      transform: "translate(-40%, -10%)",
+    },
+  };
 
   useEffect(() => {
     getSelectedUser(user.username).then(res => setUserProfile(res.user));
@@ -16,6 +36,32 @@ const UserProfile = () => {
 
   const handleSubmitPhoto = e => {
     postPicture(user.token, user.username, picture);
+  };
+
+  const handleSubmitAbout = e => {
+    e.preventDefault();
+    const newUserInfo = {
+      about,
+    };
+
+    patchUser(user.token, user.username, newUserInfo);
+  };
+
+  const handleSubmitDisplayName = e => {
+    e.preventDefault();
+    const newUserInfo = {
+      displayName,
+    };
+
+    patchUser(user.token, user.username, newUserInfo);
+  };
+
+  const openModal = () => {
+    dispatch({ type: OPEN_MODAL2 });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: CLOSE_MODAL2 });
   };
 
   return (
@@ -40,7 +86,43 @@ const UserProfile = () => {
         <div>Profile Birth : {userProfile.createdAt}</div>
         <input type="file" onChange={e => setPicture(e.target.files[0])} />
         <button onClick={handleSubmitPhoto}>Update Photo</button>
+        <button onClick={openModal}>Change User Info</button>
       </div>
+      <Modal style={customStyles} isOpen={isModal2Open}>
+        <div>
+          <button onClick={closeModal}>CLOSE</button>
+          <Form onSubmit={handleSubmitAbout}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>About</Form.Label>
+              <Form.Control
+                onChange={e => setAbout(e.target.value)}
+                value={about}
+                type="text"
+                placeholder="About me..."
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+          <Form onSubmit={handleSubmitDisplayName}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Display Name</Form.Label>
+              <Form.Control
+                onChange={e => setDisplayName(e.target.value)}
+                value={displayName}
+                type="text"
+                placeholder="my real name"
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </div>
+      </Modal>
     </div>
   );
 };
