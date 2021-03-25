@@ -3,7 +3,6 @@ import { loginRequest } from "../fetchRequests";
 import { Link } from "react-router-dom";
 import { LOGIN, useStore } from "../store/store";
 import { useHistory } from "react-router-dom";
-import "../assets/login.css";
 
 function Login() {
   const history = useHistory();

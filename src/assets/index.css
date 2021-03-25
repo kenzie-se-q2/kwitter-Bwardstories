@@ -45,17 +45,20 @@ code {
 .homePage {
   display: flex;
   justify-content: space-around;
+  background: #00356b;
 }
 
 .leftContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 30%;
+  width: 30%;
 }
 
 .middleContainer {
-  min-width: 40%;
+  width: 30%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
 }
 
 .rightContainer {
@@ -63,7 +66,7 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  min-width: 30%;
+  width: 30%;
   max-height: 100vh;
 }
 
@@ -73,13 +76,13 @@ code {
   border-top-right-radius: 5%;
   margin-top: 2%;
   width: 100%;
-  height: 60%;
+  height: 55%;
   box-shadow: 10px 10px 10px;
 }
 
 .profileContainer {
-  min-height: 99vh;
-  min-width: 40%;
+  height: 99vh;
+  width: 30%;
   display: flex;
   flex-direction: column;
 }
@@ -107,10 +110,112 @@ code {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: white;
+  background: #dae8f3;
   width: 35%;
   height: 50%;
   border-radius: 2%;
   border: 2px solid black;
   box-shadow: 10px 10px 10px;
+}
+
+.modalContentsContainer img {
+  height: 100px;
+  width: 100px;
+}
+
+.modalButton {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  background: none;
+  font-size: 32px;
+  color: red;
+  border: none;
+  text-align: center;
+}
+
+.messageCardContainer {
+  position: relative;
+}
+
+.messageUsername {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  font-size: 130%;
+}
+
+.messageMessage {
+  position: absolute;
+  top: 22%;
+  left: 7%;
+}
+
+.messageLikes {
+  position: absolute;
+  bottom: 18%;
+  right: 5%;
+}
+
+.likeButton {
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+}
+
+.unlikeButton {
+  position: absolute;
+  bottom: 2%;
+  right: 15%;
+}
+
+.infoButton {
+  position: absolute;
+  top: 2%;
+  left: 40%;
+  font-size: 20%;
+}
+
+.messageItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: rgb(44, 169, 228);
+  border-bottom: 5px solid black;
+}
+
+.messageItem input {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+}
+
+.messageInputContainer {
+  width: 95%;
+  height: 85%;
+  background: white;
+  border-radius: 2%;
+  border: 1px solid black;
+}
+
+.messageItem button {
+  position: absolute;
+  top: 34%;
+  right: 38%;
+  background: #dae8f3;
+  border: none;
+  border-radius: 15%;
+}
+
+.messageInputContainer img {
+  position: absolute;
+  border-radius: 50%;
+  top: 12%;
+  left: 3.5%;
+  border: 2px solid black;
+  height: 75px;
+  width: 75px;
 }

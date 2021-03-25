@@ -17,6 +17,7 @@ const NewUser = () => {
   return (
     <div className="newUserScreen">
       <div className="newUserFormContainer">
+        <h1>Create New User</h1>
         <Form>
           <Form.Row className="align-items-center">
             <Col xs="auto">
@@ -60,7 +61,7 @@ const NewUser = () => {
               </InputGroup>
             </Col>
           </Form.Row>
-          <Form.Row className="align-items-center">
+          <Form.Row style={{ justifyContent: "center" }}>
             <Col xs="auto">
               <Link to="/">
                 <Button

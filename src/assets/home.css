@@ -1,0 +1,24 @@
+.homePage {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leftContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30%;
+}
+
+.middleContainer {
+  min-width: 40%;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 30%;
+  max-height: 100vh;
+}

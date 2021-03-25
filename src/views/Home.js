@@ -15,7 +15,7 @@ function Home() {
         <Menu />
       </div>
       <div className="middleContainer">
-        <h1>Kwitter</h1>
+        <h1>Kenzer</h1>
         <MessageItem />
         <MessageList />
       </div>

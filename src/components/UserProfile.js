@@ -53,7 +53,6 @@ const UserProfile = () => {
     const newUserInfo = {
       about,
     };
-
     patchUser(user.token, user.username, newUserInfo);
     setAbout("");
   };
@@ -63,17 +62,8 @@ const UserProfile = () => {
     const newUserInfo = {
       displayName,
     };
-
     patchUser(user.token, user.username, newUserInfo);
     setDisplayName("");
-  };
-
-  const openModal = () => {
-    dispatch({ type: OPEN_MODAL2 });
-  };
-
-  const closeModal = () => {
-    dispatch({ type: CLOSE_MODAL2 });
   };
 
   return (
@@ -94,11 +84,18 @@ const UserProfile = () => {
         <div>Profile Birth : {userProfile.createdAt}</div>
         <input type="file" onChange={e => setPicture(e.target.files[0])} />
         <button onClick={handleSubmitPhoto}>Update Photo</button>
-        <button onClick={openModal}>Change User Info</button>
+        <button onClick={() => dispatch({ type: OPEN_MODAL2 })}>
+          Change User Info
+        </button>
       </div>
       <Modal style={customStyles} isOpen={isModal2Open}>
         <div>
-          <button onClick={closeModal}>CLOSE</button>
+          <button
+            onClick={() => {
+              dispatch({ type: CLOSE_MODAL2 });
+            }}>
+            CLOSE
+          </button>
           <Form onSubmit={handleSubmitAbout}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>About</Form.Label>

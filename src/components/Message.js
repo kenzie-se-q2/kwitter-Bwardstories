@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../assets/index.css";
+
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { likeMessage, removeLike } from "../fetchRequests";
+import "../assets/index.css";
+import { likeMessage, removeLike, baseURL } from "../fetchRequests";
 import {
   useStore,
   SELECTED_USER,
@@ -22,13 +23,13 @@ const Message = props => {
   const selectedUser = useStore(state => state.selectedUser);
   const customStyles = {
     content: {
-      top: "20%",
-      left: "30%",
+      top: "30%",
+      left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      width: "40%",
-      height: "70%",
+      width: "30%",
+      height: "40%",
       transform: "translate(-40%, -10%)",
     },
   };
@@ -54,43 +55,65 @@ const Message = props => {
   };
 
   const closeModal = () => {
-    dispatch({ type: SELECTED_USER, payload: "" });
     dispatch({ type: CLOSE_MODAL });
   };
 
   useEffect(() => {}, [likes]);
 
   return (
-    <Card
-      className="text-center"
-      style={{
-        margin: "2%",
-        borderRadius: "2%",
-        boxShadow: "8px 8px black",
-      }}>
+    <div className="messageCardContainer">
+      <Card
+        className="text-center"
+        style={{
+          margin: "2%",
+          borderRadius: "2%",
+          boxShadow: "8px 8px black",
+          height: "200px",
+        }}>
+        <Card.Body>
+          <Card.Text className="messageUsername">
+            {messageData.username}
+          </Card.Text>
+          <Card.Text className="messageMessage">{messageData.text}</Card.Text>
+          <Card.Text className="messageLikes">Likes: {likes}</Card.Text>
+          <Button className="likeButton" variant="primary" onClick={handleLike}>
+            Like
+          </Button>
+          <Button
+            className="unlikeButton"
+            variant="primary"
+            onClick={handleRemoveLike}>
+            unLike
+          </Button>
+          <Button
+            size="sm"
+            className="infoButton"
+            variant="primary"
+            onClick={handleProfileClick}>
+            View User Info
+          </Button>
+        </Card.Body>
+        <Card.Footer className="text-muted">
+          {messageData.createdAt.slice(0, 10)}
+        </Card.Footer>
+      </Card>
       <Modal style={customStyles} isOpen={isModalOpen}>
-        <div>
-          <button onClick={closeModal}>CLOSE</button>
-          {JSON.stringify(selectedUser)}
+        <div className="modalContentsContainer">
+          <img
+            src={`${baseURL}users/${selectedUser.user.username}/picture`}
+            alt=""
+          />
+          <p>Name : {selectedUser.user.username}</p>
+          <p>AKA : {selectedUser.user.displayName}</p>
+          <p>About Me : {selectedUser.user.about}</p>
+          <p>User Since : {selectedUser.user.createdAt.slice(0, 10)} </p>
+          <p>Last Update : {selectedUser.user.updatedAt.slice(0, 10)}</p>
+          <button className="modalButton" onClick={closeModal}>
+            X
+          </button>
         </div>
       </Modal>
-      <Card.Header>UserName: {messageData.username}</Card.Header>
-      <Card.Body>
-        <Card.Text>message: {messageData.text}</Card.Text>
-        <Card.Text>Date Sent: {messageData.createdAt}</Card.Text>
-        <Card.Text>Likes: {likes}</Card.Text>
-        <Button variant="primary" onClick={handleLike}>
-          Like
-        </Button>
-        <Button variant="primary" onClick={handleRemoveLike}>
-          unLike
-        </Button>
-        <Button variant="primary" onClick={handleProfileClick}>
-          View Profile
-        </Button>
-      </Card.Body>
-      <Card.Footer className="text-muted">2 days ago</Card.Footer>
-    </Card>
+    </div>
   );
 };
 
