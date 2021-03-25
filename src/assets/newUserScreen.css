@@ -1,0 +1,18 @@
+.newUserScreen {
+  display: flex;
+  justify-content: center;
+  background: #dae8f3;
+  height: 100vh;
+}
+
+.newUserFormContainer {
+  display: flex;
+  justify-content: center;
+  background: white;
+  width: 25%;
+  height: 35%;
+  margin-top: 12%;
+  padding: 4%;
+  border-radius: 3%;
+  box-shadow: 40px 40px;
+}

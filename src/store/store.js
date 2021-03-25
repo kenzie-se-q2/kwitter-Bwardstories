@@ -1,5 +1,5 @@
 import create from "zustand";
-import { devtools, redux } from "zustand/middleware";
+import { devtools, redux, persist } from "zustand/middleware";
 
 // define the store's initial state
 const initialState = {
@@ -60,4 +60,4 @@ const reducer = (state, action) => {
 };
 
 // create useStore hook
-export const useStore = create(devtools(redux(reducer, initialState)));
+export const useStore = create(persist(devtools(redux(reducer, initialState))));
