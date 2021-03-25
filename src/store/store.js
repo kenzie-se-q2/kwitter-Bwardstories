@@ -9,7 +9,16 @@ const initialState = {
   messages: [],
   messageList: [],
   userList: [],
-  selectedUser: {},
+  selectedUser: {
+    user: {
+      pictureLocation: "default",
+      username: "default",
+      displayName: "default",
+      about: "default",
+      updatedAt: "default",
+      createdAt: "default",
+    },
+  },
   isModalOpen: false,
   isModal2Open: false,
 };
@@ -60,4 +69,4 @@ const reducer = (state, action) => {
 };
 
 // create useStore hook
-export const useStore = create(persist(devtools(redux(reducer, initialState))));
+export const useStore = create(devtools(redux(reducer, initialState)));
