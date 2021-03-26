@@ -19,7 +19,7 @@ const RandomUserCarousel = () => {
                 variant="top"
                 src={
                   user.pictureLocation
-                    ? `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`
+                    ? `https://kwitter-api-b.herokuapp.com/users/${user.username}/picture`
                     : defaultPic
                 }
                 style={{ height: "339px" }}

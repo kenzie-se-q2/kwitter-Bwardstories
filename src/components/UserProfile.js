@@ -39,7 +39,7 @@ const UserProfile = () => {
     postPicture(user.token, user.username, picture);
     dispatch({
       type: PROFILE_PIC,
-      payload: `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`,
+      payload: `https://kwitter-api-b.herokuapp.com/users/${user.username}/picture`,
     });
   };
 
