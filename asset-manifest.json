@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/kwitter-starter/static/css/main.4aef9e8f.chunk.css",
-    "main.js": "/kwitter-starter/static/js/main.3f5278e3.chunk.js",
-    "main.js.map": "/kwitter-starter/static/js/main.3f5278e3.chunk.js.map",
-    "runtime-main.js": "/kwitter-starter/static/js/runtime-main.9d366813.js",
-    "runtime-main.js.map": "/kwitter-starter/static/js/runtime-main.9d366813.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/kwitter-starter/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.e64cc891.chunk.js": "/kwitter-starter/static/js/2.e64cc891.chunk.js",
-    "static/js/2.e64cc891.chunk.js.map": "/kwitter-starter/static/js/2.e64cc891.chunk.js.map",
-    "index.html": "/kwitter-starter/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/kwitter-starter/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.4aef9e8f.chunk.css.map": "/kwitter-starter/static/css/main.4aef9e8f.chunk.css.map",
-    "static/js/2.e64cc891.chunk.js.LICENSE.txt": "/kwitter-starter/static/js/2.e64cc891.chunk.js.LICENSE.txt"
+    "main.css": "/kwitter-bwardstories/static/css/main.4aef9e8f.chunk.css",
+    "main.js": "/kwitter-bwardstories/static/js/main.190c272c.chunk.js",
+    "main.js.map": "/kwitter-bwardstories/static/js/main.190c272c.chunk.js.map",
+    "runtime-main.js": "/kwitter-bwardstories/static/js/runtime-main.58748dd6.js",
+    "runtime-main.js.map": "/kwitter-bwardstories/static/js/runtime-main.58748dd6.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/kwitter-bwardstories/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.e64cc891.chunk.js": "/kwitter-bwardstories/static/js/2.e64cc891.chunk.js",
+    "static/js/2.e64cc891.chunk.js.map": "/kwitter-bwardstories/static/js/2.e64cc891.chunk.js.map",
+    "index.html": "/kwitter-bwardstories/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/kwitter-bwardstories/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.4aef9e8f.chunk.css.map": "/kwitter-bwardstories/static/css/main.4aef9e8f.chunk.css.map",
+    "static/js/2.e64cc891.chunk.js.LICENSE.txt": "/kwitter-bwardstories/static/js/2.e64cc891.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9d366813.js",
+    "static/js/runtime-main.58748dd6.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.e64cc891.chunk.js",
     "static/css/main.4aef9e8f.chunk.css",
-    "static/js/main.3f5278e3.chunk.js"
+    "static/js/main.190c272c.chunk.js"
   ]
 }
