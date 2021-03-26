@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kwitter-Bwardstories/static/css/main.c6964cb6.chunk.css",
+    "main.css": "/kwitter-Bwardstories/static/css/main.14df91a1.chunk.css",
     "main.js": "/kwitter-Bwardstories/static/js/main.9848c55e.chunk.js",
     "main.js.map": "/kwitter-Bwardstories/static/js/main.9848c55e.chunk.js.map",
     "runtime-main.js": "/kwitter-Bwardstories/static/js/runtime-main.63c3c24f.js",
@@ -10,14 +10,14 @@
     "static/js/2.e64cc891.chunk.js.map": "/kwitter-Bwardstories/static/js/2.e64cc891.chunk.js.map",
     "index.html": "/kwitter-Bwardstories/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/kwitter-Bwardstories/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.c6964cb6.chunk.css.map": "/kwitter-Bwardstories/static/css/main.c6964cb6.chunk.css.map",
+    "static/css/main.14df91a1.chunk.css.map": "/kwitter-Bwardstories/static/css/main.14df91a1.chunk.css.map",
     "static/js/2.e64cc891.chunk.js.LICENSE.txt": "/kwitter-Bwardstories/static/js/2.e64cc891.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.63c3c24f.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.e64cc891.chunk.js",
-    "static/css/main.c6964cb6.chunk.css",
+    "static/css/main.14df91a1.chunk.css",
     "static/js/main.9848c55e.chunk.js"
   ]
 }
