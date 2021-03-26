@@ -19,26 +19,21 @@ const UserProfile = () => {
   const [displayName, setDisplayName] = useState("");
   const profilePic = useStore(state => state.profilePic);
   const user = useStore(state => state.user);
-  const selectedUser = useStore(state => state.selectedUser);
   const isModal2Open = useStore(state => state.isModal2Open);
   const dispatch = useStore(state => state.dispatch);
 
   const customStyles = {
     content: {
-      top: "20%",
-      left: "30%",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      width: "40%",
-      height: "70%",
-      transform: "translate(-40%, -10%)",
+      width: "20%",
+      height: "40%",
     },
   };
-
-  useEffect(() => {
-    getSelectedUser(user.username).then(res => setUserProfile(res.user));
-  }, [postPicture, displayName, about]);
 
   const handleSubmitPhoto = e => {
     postPicture(user.token, user.username, picture);
@@ -47,6 +42,11 @@ const UserProfile = () => {
       payload: `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`,
     });
   };
+
+  useEffect(() => {
+    getSelectedUser(user.username).then(res => setUserProfile(res.user));
+    handleSubmitPhoto();
+  }, [displayName, about]);
 
   const handleSubmitAbout = e => {
     e.preventDefault();
@@ -81,7 +81,6 @@ const UserProfile = () => {
             ? userProfile.about
             : " One thing about me, I haven't gotten around to updating my about me info yet"}
         </div>
-        <div>Profile Birth : {userProfile.createdAt}</div>
         <input type="file" onChange={e => setPicture(e.target.files[0])} />
         <button onClick={handleSubmitPhoto}>Update Photo</button>
         <button onClick={() => dispatch({ type: OPEN_MODAL2 })}>
@@ -91,10 +90,11 @@ const UserProfile = () => {
       <Modal style={customStyles} isOpen={isModal2Open}>
         <div>
           <button
+            className="modalButton"
             onClick={() => {
               dispatch({ type: CLOSE_MODAL2 });
             }}>
-            CLOSE
+            X
           </button>
           <Form onSubmit={handleSubmitAbout}>
             <Form.Group controlId="formBasicEmail">

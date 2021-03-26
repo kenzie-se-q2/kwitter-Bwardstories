@@ -1,5 +1,5 @@
 import create from "zustand";
-import { devtools, redux, persist } from "zustand/middleware";
+import { devtools, redux } from "zustand/middleware";
 
 // define the store's initial state
 const initialState = {

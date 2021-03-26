@@ -21,7 +21,7 @@ const MessageItem = () => {
     fetch(`${baseURL}users/${user.username}/picture`).then(res =>
       setProfilePic(res)
     );
-  }, []);
+  }, [user.username]);
 
   return (
     <section className="messageItem">
@@ -38,7 +38,7 @@ const MessageItem = () => {
           onChange={event => handleChange(event.target.value)}
           value={userInput}></input>
         <button className="post-message" onClick={handlePost}>
-          Post
+          ZEET
         </button>
       </div>
     </section>

@@ -4,7 +4,6 @@ import Carousel from "react-bootstrap/Carousel";
 import defaultPic from "../images/defaultProfile.png";
 import "../assets/index.css";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const RandomUserCarousel = () => {
@@ -23,7 +22,7 @@ const RandomUserCarousel = () => {
                     ? `http://kwitter-api-b.herokuapp.com/users/${user.username}/picture`
                     : defaultPic
                 }
-                style={{ height: "340px" }}
+                style={{ height: "339px" }}
               />
               <Card.Body>
                 <Card.Title>{user.displayName}</Card.Title>
@@ -32,7 +31,6 @@ const RandomUserCarousel = () => {
                     ? user.about
                     : "One thing about me, I haven't gotten around to updating my about me info yet"}
                 </Card.Text>
-                <Button variant="primary">See Profile</Button>
               </Card.Body>
             </Card>
           </Carousel.Item>
