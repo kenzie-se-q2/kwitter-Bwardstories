@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/kwitter-starter">
+    <BrowserRouter basename="/kwitter-Bwardstories">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
