@@ -1,21 +1,19 @@
 import React from "react";
 import MessageList from "./MessageList";
-import { useStore } from "../store/store";
 import RandomUserCarousel from "../components/RandomUserCarousel";
+import Header from "../components/Header";
 import Menu from "../components/Menu";
 import "../assets/index.css";
 import MessageItem from "../components/MessageItem";
 
 function Home() {
-  const user = useStore(state => state.user);
-
   return (
     <section className="homePage">
       <div className="leftContainer">
         <Menu />
       </div>
       <div className="middleContainer">
-        <h1>Kenzer</h1>
+        <Header />
         <MessageItem />
         <MessageList />
       </div>

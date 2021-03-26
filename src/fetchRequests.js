@@ -98,6 +98,7 @@ export const postPicture = (token, username, pictureData) => {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + token,
+      ContentType: "multipart/form-data",
     },
     body: formData,
   }).then(res => res.json());

@@ -6,7 +6,6 @@ import NewUser from "./views/NewUser";
 import { Switch, Route } from "react-router-dom";
 import { useStore, RANDOM_USERS } from "./store/store";
 import { getUserList } from "./fetchRequests";
-import UserProfile from "./components/UserProfile";
 import UserProfilePage from "./views/UserProfilePage";
 
 function App() {
